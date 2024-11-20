@@ -32,6 +32,9 @@ public class PlacementSystem : MonoBehaviour
      IBuildingState buildingState;
 
      [SerializeField]
+     private ContextMenu activeContextMenu; // Arrástralo desde la escena en el Inspector
+
+     [SerializeField]
      private SaveSystem saveSystem;
 
      private void Start()
@@ -41,6 +44,8 @@ public class PlacementSystem : MonoBehaviour
           floorData = new();
           furnitureData = new();
           saveSystem.Initialize(floorData,furnitureData,grid);
+          inputManager.OnRightClicked += HandleRightClick;
+
      }
 
      private void Update(){
@@ -56,7 +61,6 @@ public class PlacementSystem : MonoBehaviour
           // Guardar con S
           if (Input.GetKeyDown(KeyCode.S))
           {
-               Debug.Log("jojo");
                saveSystem?.SaveScene();
           }
           
@@ -65,26 +69,6 @@ public class PlacementSystem : MonoBehaviour
           {
                saveSystem?.LoadScene();
           }
-          // if (Input.GetKey(KeyCode.Tab)){
-          //      pnPause.SetActive(true);
-          //      gridVisualization.SetActive(false);
-          //      preview.StopShowingPreview();
-          // }
-          // // Reducir el tiempo actual basado en deltaTime
-          // currentTime -= Time.deltaTime;
-          // // Asegurarse de que el tiempo no sea negativo
-          // if (currentTime < 0f)
-          // {
-          //      currentTime = 0f;
-          // }
-          // // Actualizar el fillAmount basado en el tiempo restante
-          // radialImage.fillAmount = currentTime / totalTime;
-          // // Opción: Si quieres que ocurra algo cuando el tiempo llega a 0
-          // if (currentTime == 0f)
-          // {
-          //      // Acción cuando el tiempo se acaba
-          //      Debug.Log("¡El tiempo se ha acabado!");
-          // }
 
           if(buildingState == null){
                return;
@@ -95,6 +79,63 @@ public class PlacementSystem : MonoBehaviour
                buildingState.UpdateState(gridPosition);
                lastDetectedPosition = gridPosition;
           } 
+     }
+
+     private void HandleRightClick(Vector3 mousePosition)
+     {
+          // if (activeContextMenu.IsVisible)
+          // {
+          //      activeContextMenu.HideMenu();
+          //      return;
+          // }
+
+          Vector3Int gridPosition = grid.WorldToCell(mousePosition);
+          
+          if (!furnitureData.CanPlaceObjectAt(gridPosition, Vector2Int.one) || 
+               !floorData.CanPlaceObjectAt(gridPosition, Vector2Int.one))
+          {
+               activeContextMenu.ShowAtPosition(mousePosition, gridPosition);
+          }
+     }
+
+     public void RemoveObjectAtPosition(Vector3Int gridPosition)
+     {
+          GridData selectedData = null;
+          int gameObjectIndex = -1;
+
+          if (!furnitureData.CanPlaceObjectAt(gridPosition, Vector2Int.one))
+          {
+               selectedData = furnitureData;
+          }
+          else if (!floorData.CanPlaceObjectAt(gridPosition, Vector2Int.one))
+          {
+               selectedData = floorData;
+          }
+
+          if (selectedData != null)
+          {
+               gameObjectIndex = selectedData.GetRepresentationIndex(gridPosition);
+               if (gameObjectIndex != -1)
+               {
+                    selectedData.RemoveObjectAt(gridPosition);
+                    objectPlacer.RemoveObjectAt(gameObjectIndex);
+               }
+          }
+     }
+
+     public void StartReplacementModeForPosition(Vector3Int gridPosition)
+     {
+          StopPlacement();
+          gridVisualization.SetActive(true);
+          buildingState = new RePlacementState(grid, 
+                                             preview, 
+                                             database, 
+                                             floorData, 
+                                             furnitureData, 
+                                             objectPlacer);
+          ((RePlacementState)buildingState).SelectObject(gridPosition);
+          inputManager.OnClicked += PlaceStructure;
+          inputManager.OnExit += StopPlacement;
      }
 
      private void PlaceStructure(){
@@ -159,29 +200,5 @@ public class PlacementSystem : MonoBehaviour
           inputManager.OnExit += StopPlacement;
      }
 
-     /*
-     public void restart(){
-          StopPlacement();
-          pnPause.SetActive(false);
-          placedGameObjects.Clear();
-
-          gridVisualization.SetActive(false);
-          preview.StopShowingPreview();
-          floorData = new();
-          furnitureData = new();
-
-     }
-     public void iniciar(){
-          //StopPlacement();
-          pnPause.SetActive(false);
-          placedGameObjects.Clear();
-
-          gridVisualization.SetActive(false);
-          preview.StopShowingPreview();
-          floorData = new();
-          furnitureData = new();
-
-          currentTime = totalTime;
-          pnGame.SetActive(false);
-     }*/
+     
 }

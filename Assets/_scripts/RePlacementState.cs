@@ -51,7 +51,7 @@ public class RePlacementState : IBuildingState, IRotatable
         }
     }
 
-    private void SelectObject(Vector3Int gridPosition)
+    public void SelectObject(Vector3Int gridPosition)
     {
         GridData selectedData = null;
         int objectID = -1;

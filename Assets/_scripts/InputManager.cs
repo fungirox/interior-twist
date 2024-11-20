@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
 
     public event Action OnClicked, OnExit;
 
+    public event Action<Vector3> OnRightClicked;
 
     private void Update(){
         if (Input.GetMouseButtonDown(0)){
@@ -23,6 +24,11 @@ public class InputManager : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Escape)){
             OnExit?.Invoke();
+        }
+        if (Input.GetMouseButtonDown(1)) // Click derecho
+        {
+            OnRightClicked?.Invoke(GetSelectedMapPosition());
+            
         }
         
     }
