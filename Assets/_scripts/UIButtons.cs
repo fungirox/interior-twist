@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class UIButtons : MonoBehaviour
 {
-    public GameObject pnPause;
 
     // Start is called before the first frame update
     void Start()
@@ -17,9 +16,7 @@ public class UIButtons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Tab)){
-            pnPause.SetActive(true);
-        }
+        
 
     }
     public void exit(){
@@ -28,8 +25,5 @@ public class UIButtons : MonoBehaviour
     public void loadScene(string scene){
         SceneManager.LoadScene(scene);
     }
-    public void resume(){
-        pnPause.SetActive(false);
-    }
-
+    
 }

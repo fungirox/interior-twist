@@ -37,6 +37,7 @@ public class ContextMenu : MonoBehaviour
             placementSystem.RemoveObjectAtPosition(selectedPosition);
             HideMenu();
         });
+
     }
 
     private void Update()

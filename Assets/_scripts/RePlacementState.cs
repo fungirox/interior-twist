@@ -173,7 +173,8 @@ public class RePlacementState : IBuildingState, IRotatable
         if (selectedObjectIndex != -1)
         {
             isRotated = !isRotated;
-            previewSystem.RotatePreview();
+            float newRotation = isRotated ? 90f : 0f;
+            previewSystem.RotatePreview(newRotation);
             Vector3Int currentGridPosition = grid.WorldToCell(previewSystem.GetCurrentPosition());
             UpdateState(currentGridPosition);
         }

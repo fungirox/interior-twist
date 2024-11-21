@@ -13,27 +13,43 @@ MonoBehaviour:
   m_Name: Database
   m_EditorClassIdentifier: 
   objectsData:
-  - <Name>k__BackingField: Floor
+  - <Name>k__BackingField: Chair
     <ID>k__BackingField: 0
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 175886647813805099, guid: a230b921548bebd4cb7737254af1241c, type: 3}
-  - <Name>k__BackingField: Chair
+    <Prefab>k__BackingField: {fileID: 4428052050468720457, guid: 33972fa53ea879b40b04c1822fec7ac9, type: 3}
+  - <Name>k__BackingField: ArmChair
     <ID>k__BackingField: 1
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 4428052050468720457, guid: 33972fa53ea879b40b04c1822fec7ac9, type: 3}
-  - <Name>k__BackingField: BigBed
+    <Prefab>k__BackingField: {fileID: 2322347798732808275, guid: d78f9da765aafa84380311074a5313d2, type: 3}
+  - <Name>k__BackingField: StandartChair
     <ID>k__BackingField: 2
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 3592613213119920639, guid: 959116a4163f5e343aa1824fa4b36fba, type: 3}
+  - <Name>k__BackingField: GamingChair
+    <ID>k__BackingField: 3
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 3302696180191400534, guid: 60a409116488ca1449e540eb18a0dc06, type: 3}
+  - <Name>k__BackingField: ThinChair
+    <ID>k__BackingField: 4
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 1613485218236970995, guid: 2bc7dfd2c791b7d4ab64629a17bab225, type: 3}
+  - <Name>k__BackingField: Floor
+    <ID>k__BackingField: 5
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 175886647813805099, guid: a230b921548bebd4cb7737254af1241c, type: 3}
+  - <Name>k__BackingField: BigBed
+    <ID>k__BackingField: 6
     <Size>k__BackingField: {x: 2, y: 2}
     <Prefab>k__BackingField: {fileID: 3487007735555770654, guid: 08c8c3385e90d4942b18b7724b49fc09, type: 3}
   - <Name>k__BackingField: Table
-    <ID>k__BackingField: 3
+    <ID>k__BackingField: 7
     <Size>k__BackingField: {x: 2, y: 1}
     <Prefab>k__BackingField: {fileID: 3493615974341626966, guid: db7c16a7554513e428af1b217071f580, type: 3}
   - <Name>k__BackingField: Sofa
-    <ID>k__BackingField: 4
+    <ID>k__BackingField: 8
     <Size>k__BackingField: {x: 3, y: 2}
     <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
   - <Name>k__BackingField: StylishDesk
-    <ID>k__BackingField: 5
+    <ID>k__BackingField: 9
     <Size>k__BackingField: {x: 2, y: 1}
     <Prefab>k__BackingField: {fileID: 1198057960089202225, guid: c765a332b80621141bac748d64a8ba0a, type: 3}

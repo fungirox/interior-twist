@@ -83,7 +83,7 @@ public class PlacementState : IBuildingState, IRotatable
     public void Rotate()
     {
         isRotated = !isRotated;
-        previewSystem.RotatePreview();
+        previewSystem.RotatePreview(isRotated ? 90f : 0f); // Envía la rotación como argumento
         Vector3Int currentGridPosition = grid.WorldToCell(previewSystem.GetCurrentPosition());
         UpdateState(currentGridPosition);
     }

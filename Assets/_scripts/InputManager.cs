@@ -13,26 +13,45 @@ public class InputManager : MonoBehaviour
 
     [SerializeField]
     private LayerMask placementLayermask;
-
     public event Action OnClicked, OnExit;
-
     public event Action<Vector3> OnRightClicked;
+
+    [SerializeField]
+    public GameObject pnPause;
+    public GameObject pnFloors;
+    public GameObject pnChairs;
+    public GameObject pnFurniture;
+
+
 
     private void Update(){
         if (Input.GetMouseButtonDown(0)){
             OnClicked?.Invoke();
         }
         if(Input.GetKeyDown(KeyCode.Escape)){
+            pnFloors.SetActive(false);
+            pnChairs.SetActive(false);
             OnExit?.Invoke();
         }
         if (Input.GetMouseButtonDown(1)) // Click derecho
         {
             OnRightClicked?.Invoke(GetSelectedMapPosition());
-            
         }
-        
+
+        if (Input.GetKey(KeyCode.Tab)){
+            OnExit?.Invoke();
+            pnPause.SetActive(true);
+        }
     }
  
+    public void activatePanel(GameObject panel){
+        pnFloors.SetActive(false);
+        pnChairs.SetActive(false);
+
+        panel.SetActive(true);
+        OnExit?.Invoke();
+    }
+
     public bool IsPointerOverUI()
         => EventSystem.current.IsPointerOverGameObject();
 

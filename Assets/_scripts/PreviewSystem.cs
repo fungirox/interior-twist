@@ -6,7 +6,7 @@ public class PreviewSystem : MonoBehaviour
 {
     [SerializeField]
     private float previewYOffset = 0.06f;
-    private float currentRotation = 0f;
+    //private float currentRotation = 0f;
 
     [SerializeField]
     private GameObject cellIndicator;
@@ -90,13 +90,11 @@ public class PreviewSystem : MonoBehaviour
         previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
     }
 
-    public void RotatePreview()
+    public void RotatePreview(float rotationY)
     {
         if (previewObject != null)
         {
-            currentRotation += 90f;
-            if (currentRotation >= 360f) currentRotation = 0f;
-            previewObject.transform.rotation = Quaternion.Euler(0, currentRotation, 0);
+            previewObject.transform.rotation = Quaternion.Euler(0, rotationY, 0);
         }
     }
 
