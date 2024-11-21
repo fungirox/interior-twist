@@ -37,8 +37,8 @@ public class ObjectPlacer : MonoBehaviour
     {
         if (index >= 0 && index < placedGameObjects.Count)
         {
-            // Aproximación basada en la rotación Y del objeto
-            return Mathf.Approximately(placedGameObjects[index].transform.rotation.eulerAngles.y, 90f);
+            // Verificar si la rotación es cercana a 90 grados
+            return Mathf.Abs(placedGameObjects[index].transform.rotation.eulerAngles.y - 90f) < 1f;
         }
         return false;
     }

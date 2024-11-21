@@ -22,7 +22,10 @@ public class InputManager : MonoBehaviour
     public GameObject pnChairs;
     public GameObject pnBeds;
     public GameObject pnTables;
-
+    public GameObject pnPlants;
+    public GameObject pnBookshelf;
+    public GameObject pnVase;
+    public GameObject pnLamps;
 
 
     private void Update(){
@@ -50,6 +53,10 @@ public class InputManager : MonoBehaviour
         pnChairs.SetActive(false);
         pnBeds.SetActive(false);
         pnTables.SetActive(false);
+        pnPlants.SetActive(false);
+        pnBookshelf.SetActive(false);
+        pnVase.SetActive(false);
+        pnLamps.SetActive(false);
 
         panel.SetActive(true);
         OnExit?.Invoke();

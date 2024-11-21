@@ -16,15 +16,35 @@ public class PreviewSystem : MonoBehaviour
     private Material previewMaterialPrefab;
     private Material previewMaterialInstance;
 
-    private Renderer cellIndicatorRenderer;
+    private Renderer cellIndicatorRenderer;    
+    private Vector2Int currentObjectSize;
+
 
     private void Start(){
         cellIndicator.SetActive(false);
         previewMaterialInstance = new Material(previewMaterialPrefab);
         cellIndicatorRenderer = cellIndicator.GetComponentInChildren<Renderer>();
     }
-    public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size){
+    // public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size){
+    //     previewObject = Instantiate(prefab);
+    //     PreparePreview(previewObject);
+    //     PrepareCursor(size);
+    //     cellIndicator.SetActive(true);
+    // }
+
+    // public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size)
+    // {
+    //     previewObject = Instantiate(prefab);
+    //     currentObjectSize = size;
+    //     PreparePreview(previewObject);
+    //     PrepareCursor(size);
+    //     cellIndicator.SetActive(true);
+    // }
+    
+    public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size)
+    {
         previewObject = Instantiate(prefab);
+        currentObjectSize = size; // Almacenar el tamaño
         PreparePreview(previewObject);
         PrepareCursor(size);
         cellIndicator.SetActive(true);
@@ -86,14 +106,43 @@ public class PreviewSystem : MonoBehaviour
         cellIndicator.transform.position = position;
     }
 
-    private void MovePreview(Vector3 position){
-        previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
-    }
+    // private void MovePreview(Vector3 position){
+    //     previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
+    // }
 
+    private void MovePreview(Vector3 position)
+    {
+        // Usar el tamaño almacenado en currentObjectSize
+        float offsetX = (currentObjectSize.x - 1) * 0.5f;
+        float offsetZ = (currentObjectSize.y - 1) * 0.5f;
+
+        // Verificar la rotación actual del objeto
+        bool isRotated = Mathf.Approximately(previewObject.transform.rotation.eulerAngles.y, 90f);
+
+        if (isRotated)
+        {
+            // Si está rotado 90 grados, intercambiar los offsets
+            previewObject.transform.position = new Vector3(
+                position.x + offsetZ, 
+                position.y + previewYOffset, 
+                position.z - offsetX
+            );
+        }
+        else
+        {
+            // Posición normal
+            previewObject.transform.position = new Vector3(
+                position.x - offsetX, 
+                position.y + previewYOffset, 
+                position.z - offsetZ
+            );
+        }
+    }
     public void RotatePreview(float rotationY)
     {
         if (previewObject != null)
         {
+            // Rotar alrededor del centro del objeto
             previewObject.transform.rotation = Quaternion.Euler(0, rotationY, 0);
         }
     }
@@ -101,5 +150,10 @@ public class PreviewSystem : MonoBehaviour
     public Vector3 GetCurrentPosition()
     {
         return previewObject?.transform.position ?? Vector3.zero;
+    }
+
+    public Vector2Int GetCurrentObjectSize()
+    {
+        return currentObjectSize;
     }
 }

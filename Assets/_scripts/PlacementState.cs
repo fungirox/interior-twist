@@ -14,13 +14,20 @@ public class PlacementState : IBuildingState, IRotatable
     GridData furnitureData;
     ObjectPlacer objectPlacer;
 
+    private AudioSource audioSource;
+
+    private AudioClip placeSound, wrongPlacementSound;
+
     public PlacementState(int ID, 
                         Grid grid, 
                         PreviewSystem previewSystem, 
                         ObjectsDatabaseSO database,
                         GridData floorData, 
                         GridData furnitureData, 
-                        ObjectPlacer objectPlacer)
+                        ObjectPlacer objectPlacer,
+                        AudioSource audioSource,
+                        AudioClip placeSound,
+                        AudioClip wrongPlacementSound) 
     {
         this.ID = ID;
         this.grid = grid;
@@ -29,7 +36,10 @@ public class PlacementState : IBuildingState, IRotatable
         this.floorData = floorData;
         this.furnitureData = furnitureData;
         this.objectPlacer = objectPlacer;
-
+        this.audioSource = audioSource;
+        this.placeSound = placeSound;
+        this.wrongPlacementSound = wrongPlacementSound;
+    
         selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
         if( selectedObjectIndex > -1 ){
             //gridVisualization.SetActive(true);
@@ -49,19 +59,23 @@ public class PlacementState : IBuildingState, IRotatable
 
     }
 
-    public void OnAction(Vector3Int gridPosition){
+    public void OnAction(Vector3Int gridPosition)
+    {
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
-        if(!placementValidity){
-            // aqui va el audio de error
+        if (!placementValidity)
+        {
             return;
         }
 
         GameObject prefab = database.objectsData[selectedObjectIndex].Prefab;
         Vector3 rotation = isRotated ? new Vector3(0, 90, 0) : Vector3.zero;
-        int index = objectPlacer.PlaceObject(database.objectsData[selectedObjectIndex].Prefab, 
+        
+        int index = objectPlacer.PlaceObject(prefab, 
                                             grid.CellToWorld(gridPosition),
                                             rotation);
-        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? floorData  : furnitureData;
+        
+        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? floorData : furnitureData;
+        
         selectedData.AddObjectAt(gridPosition, 
                                 GetCurrentObjectSize(), 
                                 database.objectsData[selectedObjectIndex].ID, 
@@ -80,17 +94,25 @@ public class PlacementState : IBuildingState, IRotatable
         return selectedData.CanPlaceObjectAt(gridPosition, GetCurrentObjectSize());
     }
 
+    // public Vector2Int GetCurrentObjectSize()
+    // {
+    //     return currentObjectSize;
+    // }
+    
     public void Rotate()
     {
         isRotated = !isRotated;
-        previewSystem.RotatePreview(isRotated ? 90f : 0f); // Envía la rotación como argumento
+        previewSystem.RotatePreview(isRotated ? 90f : 0f);
+        
+        // Obtener la posición actual en el grid
         Vector3Int currentGridPosition = grid.WorldToCell(previewSystem.GetCurrentPosition());
         UpdateState(currentGridPosition);
     }
-    
-    private Vector2Int GetCurrentObjectSize()
+
+    public Vector2Int GetCurrentObjectSize()
     {
         Vector2Int originalSize = database.objectsData[selectedObjectIndex].Size;
         return isRotated ? new Vector2Int(originalSize.y, originalSize.x) : originalSize;
     }
-}
+
+} 

@@ -39,11 +39,11 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 3487007735555770654, guid: 08c8c3385e90d4942b18b7724b49fc09, type: 3}
   - <Name>k__BackingField: DoubleBed
     <ID>k__BackingField: 6
-    <Size>k__BackingField: {x: 2, y: 2}
+    <Size>k__BackingField: {x: 2, y: 3}
     <Prefab>k__BackingField: {fileID: 1042003309346820412, guid: 31c67fa8542556d43b98d4e155115b4c, type: 3}
   - <Name>k__BackingField: SingleBed
     <ID>k__BackingField: 7
-    <Size>k__BackingField: {x: 2, y: 1}
+    <Size>k__BackingField: {x: 2, y: 3}
     <Prefab>k__BackingField: {fileID: 4846692720815239164, guid: ad556ae5824c8174794d55f854a44a6c, type: 3}
   - <Name>k__BackingField: Table
     <ID>k__BackingField: 8
@@ -59,7 +59,7 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 627467650908626708, guid: e4292d2913c3bcd40b087fea7dd3b70c, type: 3}
   - <Name>k__BackingField: LDeskParent
     <ID>k__BackingField: 11
-    <Size>k__BackingField: {x: 2, y: 1}
+    <Size>k__BackingField: {x: 2, y: 2}
     <Prefab>k__BackingField: {fileID: 3364695137473854235, guid: 64aceaf40f3232d4ab0bd238049467d2, type: 3}
   - <Name>k__BackingField: RectangleTable
     <ID>k__BackingField: 12
@@ -67,61 +67,57 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 5261724742928832734, guid: 7e81fe64868d99a4397c6e27df5a78d3, type: 3}
   - <Name>k__BackingField: Roundtable
     <ID>k__BackingField: 13
-    <Size>k__BackingField: {x: 3, y: 2}
+    <Size>k__BackingField: {x: 2, y: 2}
     <Prefab>k__BackingField: {fileID: 4846301298360814340, guid: b21131ae1d4df2b448b64381604732db, type: 3}
   - <Name>k__BackingField: Nightstand
     <ID>k__BackingField: 14
-    <Size>k__BackingField: {x: 3, y: 2}
+    <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 4860706588496496162, guid: 704084f86a3a3d448a913c507a4915b0, type: 3}
   - <Name>k__BackingField: Table2
     <ID>k__BackingField: 15
-    <Size>k__BackingField: {x: 3, y: 2}
+    <Size>k__BackingField: {x: 2, y: 2}
     <Prefab>k__BackingField: {fileID: 6066997721997496314, guid: 6b0056d504c93ea45b8a8617033bdca5, type: 3}
-  - <Name>k__BackingField: Sofa
+  - <Name>k__BackingField: Bookshelf1
     <ID>k__BackingField: 16
-    <Size>k__BackingField: {x: 3, y: 2}
-    <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
-  - <Name>k__BackingField: Sofa
+    <Size>k__BackingField: {x: 2, y: 1}
+    <Prefab>k__BackingField: {fileID: 8347048166617322491, guid: 75a6b7ccf9cb5544ab5ab2944723b98d, type: 3}
+  - <Name>k__BackingField: Bookshelf2
     <ID>k__BackingField: 17
-    <Size>k__BackingField: {x: 3, y: 2}
-    <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
-  - <Name>k__BackingField: Sofa
-    <ID>k__BackingField: 18
-    <Size>k__BackingField: {x: 3, y: 2}
-    <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
-  - <Name>k__BackingField: Sofa
-    <ID>k__BackingField: 19
-    <Size>k__BackingField: {x: 3, y: 2}
-    <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
-  - <Name>k__BackingField: Sofa
-    <ID>k__BackingField: 32
-    <Size>k__BackingField: {x: 3, y: 2}
-    <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
-  - <Name>k__BackingField: Sofa
-    <ID>k__BackingField: 32
-    <Size>k__BackingField: {x: 3, y: 2}
-    <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
-  - <Name>k__BackingField: Sofa
-    <ID>k__BackingField: 32
-    <Size>k__BackingField: {x: 3, y: 2}
-    <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
-  - <Name>k__BackingField: Sofa
-    <ID>k__BackingField: 32
-    <Size>k__BackingField: {x: 3, y: 2}
-    <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
-  - <Name>k__BackingField: Sofa
-    <ID>k__BackingField: 32
-    <Size>k__BackingField: {x: 3, y: 2}
-    <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
-  - <Name>k__BackingField: Sofa
-    <ID>k__BackingField: 32
-    <Size>k__BackingField: {x: 3, y: 2}
-    <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
-  - <Name>k__BackingField: Sofa
-    <ID>k__BackingField: 32
-    <Size>k__BackingField: {x: 3, y: 2}
-    <Prefab>k__BackingField: {fileID: 6209001859016623507, guid: 375c2cf028501cb408766931ff19306f, type: 3}
-  - <Name>k__BackingField: Floor
-    <ID>k__BackingField: 30
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 175886647813805099, guid: a230b921548bebd4cb7737254af1241c, type: 3}
+    <Prefab>k__BackingField: {fileID: 4295096507987635195, guid: 9afc83463e80ad84eba047b32fa6719e, type: 3}
+  - <Name>k__BackingField: Bookshelf3
+    <ID>k__BackingField: 18
+    <Size>k__BackingField: {x: 2, y: 1}
+    <Prefab>k__BackingField: {fileID: 1392168916950319091, guid: 50451ef42ffd6c1478fa061119af2f3d, type: 3}
+  - <Name>k__BackingField: PinkVase
+    <ID>k__BackingField: 21
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 7640909110528218469, guid: ee66a16fe47cfd94e9a7df1087a6fe96, type: 3}
+  - <Name>k__BackingField: YellowVase
+    <ID>k__BackingField: 22
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 8801152991478768626, guid: 0d9108b8f284dd941a6b07a19b325419, type: 3}
+  - <Name>k__BackingField: BlueVase
+    <ID>k__BackingField: 23
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 6796885166692111435, guid: 38615cb3dab0d034ab7595f72743a201, type: 3}
+  - <Name>k__BackingField: CylinderLamp
+    <ID>k__BackingField: 24
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 805634751670059499, guid: 0174f4a9284e2104d8d5a657390adb0c, type: 3}
+  - <Name>k__BackingField: Lamp
+    <ID>k__BackingField: 25
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 1995232411113492409, guid: 1ca49ac2a7137b2469ea0b29c360109a, type: 3}
+  - <Name>k__BackingField: BlueFlower
+    <ID>k__BackingField: 26
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 3168766590750589953, guid: e8cc74212bc0a364eb60e7879c29856d, type: 3}
+  - <Name>k__BackingField: GreenPlant
+    <ID>k__BackingField: 27
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 375211707112047131, guid: af7c4817a7ae6634899529bf7d3d0be9, type: 3}
+  - <Name>k__BackingField: TripleCactus
+    <ID>k__BackingField: 28
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 6071060607419067869, guid: e2f6e5485d795314fb680449aef5deff, type: 3}

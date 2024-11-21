@@ -15,12 +15,20 @@ public class RePlacementState : IBuildingState, IRotatable
     private GridData furnitureData;
     private ObjectPlacer objectPlacer;
 
+    private AudioSource audioSource;
+
+    private AudioClip placeSound, wrongPlacementSound;
+
     public RePlacementState(Grid grid, 
                           PreviewSystem previewSystem, 
                           ObjectsDatabaseSO database,
                           GridData floorData, 
                           GridData furnitureData,
-                          ObjectPlacer objectPlacer)
+                          ObjectPlacer objectPlacer,
+                          AudioSource audioSource,
+                           AudioClip placeSound,
+                        AudioClip wrongPlacementSound)
+
     {
         this.grid = grid;
         this.previewSystem = previewSystem;
@@ -28,6 +36,9 @@ public class RePlacementState : IBuildingState, IRotatable
         this.floorData = floorData;
         this.furnitureData = furnitureData;
         this.objectPlacer = objectPlacer;
+        this.audioSource = audioSource;
+        this.placeSound = placeSound;
+        this.wrongPlacementSound = wrongPlacementSound;
 
         previewSystem.StartShowingRemovePreview();
     }

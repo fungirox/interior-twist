@@ -37,6 +37,12 @@ public class PlacementSystem : MonoBehaviour
      [SerializeField]
      private SaveSystem saveSystem;
 
+     [SerializeField]
+     private AudioSource audioSource;
+
+     [SerializeField]
+     private AudioClip placeSound, removeSound, wrongPlacementSound;
+
      private void Start()
      {
           gridVisualization.SetActive(false);
@@ -45,6 +51,7 @@ public class PlacementSystem : MonoBehaviour
           furnitureData = new();
           saveSystem.Initialize(floorData,furnitureData,grid);
           inputManager.OnRightClicked += HandleRightClick;
+          audioSource = GetComponent<AudioSource>();
 
      }
 
@@ -83,12 +90,6 @@ public class PlacementSystem : MonoBehaviour
 
      private void HandleRightClick(Vector3 mousePosition)
      {
-          // if (activeContextMenu.IsVisible)
-          // {
-          //      activeContextMenu.HideMenu();
-          //      return;
-          // }
-
           Vector3Int gridPosition = grid.WorldToCell(mousePosition);
           
           if (!furnitureData.CanPlaceObjectAt(gridPosition, Vector2Int.one) || 
@@ -132,7 +133,10 @@ public class PlacementSystem : MonoBehaviour
                                              database, 
                                              floorData, 
                                              furnitureData, 
-                                             objectPlacer);
+                                             objectPlacer,
+                                             audioSource,
+                                             placeSound,
+                                             wrongPlacementSound);
           ((RePlacementState)buildingState).SelectObject(gridPosition);
           inputManager.OnClicked += PlaceStructure;
           inputManager.OnExit += StopPlacement;
@@ -172,7 +176,10 @@ public class PlacementSystem : MonoBehaviour
                                              database, 
                                              floorData, 
                                              furnitureData, 
-                                             objectPlacer);
+                                             objectPlacer,
+                                             audioSource,
+                                             placeSound,
+                                             wrongPlacementSound);
 
           inputManager.OnClicked += PlaceStructure;
           inputManager.OnExit += StopPlacement;
@@ -181,7 +188,7 @@ public class PlacementSystem : MonoBehaviour
      public void StartRemoving(){
           StopPlacement();
           gridVisualization.SetActive(true);
-          buildingState = new RemovingState(grid, preview, floorData, furnitureData, objectPlacer);
+          buildingState = new RemovingState(grid, preview, floorData, furnitureData, objectPlacer, audioSource, removeSound);
           inputManager.OnClicked += PlaceStructure;
           inputManager.OnExit += StopPlacement;
      }
@@ -195,7 +202,10 @@ public class PlacementSystem : MonoBehaviour
                                              database, 
                                              floorData, 
                                              furnitureData, 
-                                             objectPlacer);
+                                             objectPlacer,
+                                             audioSource,
+                                             placeSound,
+                                             wrongPlacementSound);
           inputManager.OnClicked += PlaceStructure;
           inputManager.OnExit += StopPlacement;
      }
