@@ -20,7 +20,8 @@ public class InputManager : MonoBehaviour
     public GameObject pnPause;
     public GameObject pnFloors;
     public GameObject pnChairs;
-    public GameObject pnFurniture;
+    public GameObject pnBeds;
+    public GameObject pnTables;
 
 
 
@@ -47,6 +48,8 @@ public class InputManager : MonoBehaviour
     public void activatePanel(GameObject panel){
         pnFloors.SetActive(false);
         pnChairs.SetActive(false);
+        pnBeds.SetActive(false);
+        pnTables.SetActive(false);
 
         panel.SetActive(true);
         OnExit?.Invoke();
