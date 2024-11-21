@@ -13,10 +13,7 @@ public class PlacementState : IBuildingState, IRotatable
     GridData floorData;
     GridData furnitureData;
     ObjectPlacer objectPlacer;
-
-    private AudioSource audioSource;
-
-    private AudioClip placeSound, wrongPlacementSound;
+    SoundFeedback soundFeedback; 
 
     public PlacementState(int ID, 
                         Grid grid, 
@@ -25,9 +22,7 @@ public class PlacementState : IBuildingState, IRotatable
                         GridData floorData, 
                         GridData furnitureData, 
                         ObjectPlacer objectPlacer,
-                        AudioSource audioSource,
-                        AudioClip placeSound,
-                        AudioClip wrongPlacementSound) 
+                        SoundFeedback soundFeedback) 
     {
         this.ID = ID;
         this.grid = grid;
@@ -36,9 +31,7 @@ public class PlacementState : IBuildingState, IRotatable
         this.floorData = floorData;
         this.furnitureData = furnitureData;
         this.objectPlacer = objectPlacer;
-        this.audioSource = audioSource;
-        this.placeSound = placeSound;
-        this.wrongPlacementSound = wrongPlacementSound;
+        this.soundFeedback = soundFeedback;
     
         selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
         if( selectedObjectIndex > -1 ){
@@ -64,9 +57,10 @@ public class PlacementState : IBuildingState, IRotatable
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
         if (!placementValidity)
         {
+            soundFeedback.PlaySound(SoundType.wrongPlacement);
             return;
         }
-
+        soundFeedback.PlaySound(SoundType.Place);
         GameObject prefab = database.objectsData[selectedObjectIndex].Prefab;
         Vector3 rotation = isRotated ? new Vector3(0, 90, 0) : Vector3.zero;
         

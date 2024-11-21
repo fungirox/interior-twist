@@ -1,0 +1,156 @@
+{
+    "floorObjects": [
+        {
+            "objectID": 0,
+            "position": {
+                "x": -3.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 0
+        },
+        {
+            "objectID": 0,
+            "position": {
+                "x": -4.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 1
+        }
+    ],
+    "furnitureObjects": [
+        {
+            "objectID": 8,
+            "position": {
+                "x": -4.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 2
+        },
+        {
+            "objectID": 6,
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 4.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 3
+        },
+        {
+            "objectID": 14,
+            "position": {
+                "x": 2.0,
+                "y": 0.0,
+                "z": 5.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 4
+        },
+        {
+            "objectID": 21,
+            "position": {
+                "x": -2.0,
+                "y": 0.0,
+                "z": 5.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 5
+        },
+        {
+            "objectID": 26,
+            "position": {
+                "x": -6.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 6
+        },
+        {
+            "objectID": 25,
+            "position": {
+                "x": 3.0,
+                "y": 0.0,
+                "z": 5.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 7
+        },
+        {
+            "objectID": 1,
+            "position": {
+                "x": 3.0,
+                "y": 0.0,
+                "z": -2.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 8
+        },
+        {
+            "objectID": 23,
+            "position": {
+                "x": 2.0,
+                "y": 0.0,
+                "z": -2.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 9
+        },
+        {
+            "objectID": 24,
+            "position": {
+                "x": 4.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 10
+        },
+        {
+            "objectID": 13,
+            "position": {
+                "x": 2.0,
+                "y": 0.0,
+                "z": -5.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 11
+        },
+        {
+            "objectID": 2,
+            "position": {
+                "x": -4.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 12
+        },
+        {
+            "objectID": 3,
+            "position": {
+                "x": -4.0,
+                "y": 0.0,
+                "z": -4.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 13
+        },
+        {
+            "objectID": 10,
+            "position": {
+                "x": -4.0,
+                "y": 0.0,
+                "z": 4.0
+            },
+            "isRotated": false,
+            "placedObjectIndex": 14
+        }
+    ]
+}

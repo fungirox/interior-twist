@@ -112,31 +112,7 @@ public class PreviewSystem : MonoBehaviour
 
     private void MovePreview(Vector3 position)
     {
-        // Usar el tamaño almacenado en currentObjectSize
-        float offsetX = (currentObjectSize.x - 1) * 0.5f;
-        float offsetZ = (currentObjectSize.y - 1) * 0.5f;
-
-        // Verificar la rotación actual del objeto
-        bool isRotated = Mathf.Approximately(previewObject.transform.rotation.eulerAngles.y, 90f);
-
-        if (isRotated)
-        {
-            // Si está rotado 90 grados, intercambiar los offsets
-            previewObject.transform.position = new Vector3(
-                position.x + offsetZ, 
-                position.y + previewYOffset, 
-                position.z - offsetX
-            );
-        }
-        else
-        {
-            // Posición normal
-            previewObject.transform.position = new Vector3(
-                position.x - offsetX, 
-                position.y + previewYOffset, 
-                position.z - offsetZ
-            );
-        }
+        previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
     }
     public void RotatePreview(float rotationY)
     {

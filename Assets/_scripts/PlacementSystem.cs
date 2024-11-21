@@ -38,10 +38,12 @@ public class PlacementSystem : MonoBehaviour
      private SaveSystem saveSystem;
 
      [SerializeField]
-     private AudioSource audioSource;
+     private AudioClip correctPlacementClip, wrongPlacementClip;
+     [SerializeField]
+     private AudioSource source;
 
      [SerializeField]
-     private AudioClip placeSound, removeSound, wrongPlacementSound;
+    private SoundFeedback soundFeedback;
 
      private void Start()
      {
@@ -51,8 +53,6 @@ public class PlacementSystem : MonoBehaviour
           furnitureData = new();
           saveSystem.Initialize(floorData,furnitureData,grid);
           inputManager.OnRightClicked += HandleRightClick;
-          audioSource = GetComponent<AudioSource>();
-
      }
 
      private void Update(){
@@ -134,9 +134,7 @@ public class PlacementSystem : MonoBehaviour
                                              floorData, 
                                              furnitureData, 
                                              objectPlacer,
-                                             audioSource,
-                                             placeSound,
-                                             wrongPlacementSound);
+                                             soundFeedback);
           ((RePlacementState)buildingState).SelectObject(gridPosition);
           inputManager.OnClicked += PlaceStructure;
           inputManager.OnExit += StopPlacement;
@@ -177,9 +175,7 @@ public class PlacementSystem : MonoBehaviour
                                              floorData, 
                                              furnitureData, 
                                              objectPlacer,
-                                             audioSource,
-                                             placeSound,
-                                             wrongPlacementSound);
+                                             soundFeedback);
 
           inputManager.OnClicked += PlaceStructure;
           inputManager.OnExit += StopPlacement;
@@ -188,7 +184,7 @@ public class PlacementSystem : MonoBehaviour
      public void StartRemoving(){
           StopPlacement();
           gridVisualization.SetActive(true);
-          buildingState = new RemovingState(grid, preview, floorData, furnitureData, objectPlacer, audioSource, removeSound);
+          buildingState = new RemovingState(grid, preview, floorData, furnitureData, objectPlacer, soundFeedback);
           inputManager.OnClicked += PlaceStructure;
           inputManager.OnExit += StopPlacement;
      }
@@ -203,9 +199,7 @@ public class PlacementSystem : MonoBehaviour
                                              floorData, 
                                              furnitureData, 
                                              objectPlacer,
-                                             audioSource,
-                                             placeSound,
-                                             wrongPlacementSound);
+                                             soundFeedback);
           inputManager.OnClicked += PlaceStructure;
           inputManager.OnExit += StopPlacement;
      }

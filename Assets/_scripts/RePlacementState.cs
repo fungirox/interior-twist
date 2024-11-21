@@ -15,9 +15,7 @@ public class RePlacementState : IBuildingState, IRotatable
     private GridData furnitureData;
     private ObjectPlacer objectPlacer;
 
-    private AudioSource audioSource;
-
-    private AudioClip placeSound, wrongPlacementSound;
+    private SoundFeedback soundFeedback;
 
     public RePlacementState(Grid grid, 
                           PreviewSystem previewSystem, 
@@ -25,9 +23,7 @@ public class RePlacementState : IBuildingState, IRotatable
                           GridData floorData, 
                           GridData furnitureData,
                           ObjectPlacer objectPlacer,
-                          AudioSource audioSource,
-                           AudioClip placeSound,
-                        AudioClip wrongPlacementSound)
+                          SoundFeedback soundFeedback)
 
     {
         this.grid = grid;
@@ -36,9 +32,7 @@ public class RePlacementState : IBuildingState, IRotatable
         this.floorData = floorData;
         this.furnitureData = furnitureData;
         this.objectPlacer = objectPlacer;
-        this.audioSource = audioSource;
-        this.placeSound = placeSound;
-        this.wrongPlacementSound = wrongPlacementSound;
+        this.soundFeedback = soundFeedback;
 
         previewSystem.StartShowingRemovePreview();
     }
@@ -109,9 +103,10 @@ public class RePlacementState : IBuildingState, IRotatable
         {
             // Si no es válida la nueva posición, revertimos a la posición original
             RestoreOriginalPosition();
+            soundFeedback.PlaySound(SoundType.wrongPlacement);
             return;
         }
-
+        soundFeedback.PlaySound(SoundType.Place);
         // Remover el objeto original
         objectPlacer.RemoveObjectAt(originalObjectIndex);
 
